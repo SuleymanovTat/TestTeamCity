@@ -1,3 +1,4 @@
 # TestTeamCity
 
-![](https://ibb.co/s2rSjR3 | width=100)
+![](https://ibb.co/s2rSjR3&s=200)
+

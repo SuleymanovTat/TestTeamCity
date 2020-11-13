@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.appdistribution'
 }
 
 android {
@@ -9,15 +11,21 @@ android {
 
     defaultConfig {
         applicationId "com.example.myapplication"
-        minSdkVersion 23
+        minSdkVersion 19
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         release {
+            storeFile file("android.jks") //ссылка на файл с ключами в корневой папке проекта
+            storePassword "android" //пароль хранилища ключей
+            keyAlias "android" // keyAlias, который задавали при создания ключа
+            keyPassword "android" //пароль ключа APK
+        }
+        debug {
             storeFile file("android.jks") //ссылка на файл с ключами в корневой папке проекта
             storePassword "android" //пароль хранилища ключей
             keyAlias "android" // keyAlias, который задавали при создания ключа
@@ -29,6 +37,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release //подпись релизного APK
+
+            firebaseAppDistribution {
+                releaseNotes = "Test 1.0.5"
+                testers = "su****@gmail.com"
+            }
         }
     }
     compileOptions {
@@ -57,4 +70,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

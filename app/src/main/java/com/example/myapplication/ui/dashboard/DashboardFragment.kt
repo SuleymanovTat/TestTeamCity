@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
+import java.lang.Exception
 
 class DashboardFragment : Fragment() {
 
@@ -26,6 +27,9 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        textView.setOnClickListener {
+            throw Exception("Test Crash")
+        }
         return root
     }
 }

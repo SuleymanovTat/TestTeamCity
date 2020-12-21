@@ -15,7 +15,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-
+    var count = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,6 +42,11 @@ class HomeFragment : Fragment() {
                 params.putString("image_name", "image_name")
                 params.putString("full_text", "full_text")
                 mFirebaseAnalytics.logEvent("share_image", params)
+
+                count++
+                val paramsComment = Bundle()
+                paramsComment.putInt("count", count)
+                mFirebaseAnalytics.logEvent("delete_comments", params)
 
                 mFirebaseAnalytics.setUserProperty("favorite_food", "apple")
             }

@@ -11,4 +11,3 @@
 <a href="https://ibb.co/QXGP90N"><img src="https://i.ibb.co/3kHp1KN/2020-12-03-16-47-26.png" alt="2020-12-03-16-47-26" border="0"></a>
 
 # OneSignal
-<a href="https://ibb.co/TBj6HX3"><img src="https://i.ibb.co/TBj6HX3/2020-12-22-03-24-00.png" alt="2020-12-22-03-24-00" border="0"></a>

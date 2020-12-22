@@ -22,6 +22,7 @@ class MainApplication : Application() {
         }
 
         OneSignal.setNotificationWillShowInForegroundHandler { notificationReceivedEvent: OSNotificationReceivedEvent ->
+            notificationReceivedEvent.notification.additionalData.get("id")
             OneSignal.onesignalLog(
                 OneSignal.LOG_LEVEL.VERBOSE, "NotificationWillShowInForegroundHandler fired!" +
                         " with notification event: " + notificationReceivedEvent.toString()

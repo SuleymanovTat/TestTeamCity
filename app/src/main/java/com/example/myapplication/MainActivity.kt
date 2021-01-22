@@ -1,14 +1,15 @@
 package com.example.myapplication
 
-import android.R.id
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,5 +29,21 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        FirebaseDynamicLinks.getInstance()
+            .getDynamicLink(intent)
+            .addOnSuccessListener(
+                this
+            ) { pendingDynamicLinkData ->
+                // Get deep link from result (may be null if no link is found)
+                var deepLink: Uri? = null
+                if (pendingDynamicLinkData != null) {
+                    deepLink = pendingDynamicLinkData.link
+                }
+                Log.e("my", "pendingDynamicLinkData " + deepLink)
+                Log.e("my", "dataString " + intent.dataString)
+            }
+            .addOnFailureListener(this) { e ->
+                Log.e("my", "addOnFailureListener" + e.message)
+            }
     }
 }

@@ -8,13 +8,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 6
         versionName "1.0.6"
 
@@ -79,4 +79,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-dynamic-links'
     //push
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+
+//    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0-RC1"))
+//    // define any required OkHttp artifacts without version
+//    implementation("com.squareup.okhttp3:okhttp")
+//    implementation("com.squareup.okhttp3:logging-interceptor")
 }

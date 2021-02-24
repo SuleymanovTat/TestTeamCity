@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 
 class CustomRecyclerAdapter(private val values: List<String>) :
-        RecyclerView.Adapter<CustomRecyclerAdapter.MyViewHolder>() {
+    RecyclerView.Adapter<CustomRecyclerAdapter.MyViewHolder>() {
 
     override fun getItemCount() = values.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent?.context).inflate(R.layout.recyclerview_item, parent, false)
+        val itemView =
+            LayoutInflater.from(parent?.context).inflate(R.layout.recyclerview_item, parent, false)
         return MyViewHolder(itemView)
     }
 
@@ -22,7 +23,7 @@ class CustomRecyclerAdapter(private val values: List<String>) :
         holder.largeTextView?.text = values[position]
         holder.smallTextView?.text = "кот"
         holder.itemView.setOnClickListener {
-            Log.e("my", "click")
+            Log.e("my", "click " + position)
         }
     }
 

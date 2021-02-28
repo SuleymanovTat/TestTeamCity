@@ -35,9 +35,9 @@ class RecyclerTest : TestCase() {
                     recycler.isVisible()
 //                    https://www.raywenderlich.com/1505688-ui-testing-with-kakao-tutorial-for-android-getting-started
                     recycler {
-                        firstChild<Item> {
+                        firstChild<ImageItem> {
                             isVisible()
-                            textViewSmall { hasText("кот") }
+//                            textViewSmall { hasText("кот") }
                             click()
                         }
                         SystemClock.sleep(1500);

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -14,30 +15,38 @@ class CustomRecyclerAdapter(private val values: List<String>) :
 
     private val LAYOUT_ONE = 0
     private val LAYOUT_TWO = 1
+    private val LAYOUT_SiX = 5
     override fun getItemCount() = values.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (position == 0) LAYOUT_ONE else LAYOUT_TWO
+        return when (position) {
+            0 -> LAYOUT_ONE
+            5 -> LAYOUT_SiX
+            else -> LAYOUT_TWO
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return if (viewType == LAYOUT_ONE) {
+        if (viewType == LAYOUT_ONE) {
             val itemView = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.header_item, parent, false)
-            HeaderViewHolder(itemView)
+            return HeaderViewHolder(itemView)
+        }
+        if (viewType == LAYOUT_SiX) {
+            val itemView = LayoutInflater.from(parent?.context)
+                .inflate(R.layout.text_item, parent, false)
+            return TextViewHolder(itemView)
         } else {
             val itemView =
                 LayoutInflater.from(parent?.context)
                     .inflate(R.layout.recyclerview_item, parent, false)
-            MyViewHolder(itemView)
+            return MyViewHolder(itemView)
         }
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         if (holder.getItemViewType() == LAYOUT_ONE) {
-            holder.itemView.setOnClickListener {
-                Log.e("my", "click image")
-            }
+
         } else {
             holder.largeTextView?.text = values[position]
             holder.smallTextView?.text = "кот"
@@ -60,9 +69,25 @@ class CustomRecyclerAdapter(private val values: List<String>) :
     class HeaderViewHolder(itemView: View) : MyViewHolder(itemView) {
 
         var imageView: ImageView? = null
+        var relativeLayoutClcik: RelativeLayout? = null
 
         init {
             imageView = itemView?.findViewById(R.id.imageView)
+            relativeLayoutClcik = itemView?.findViewById(R.id.relativeLayoutClcik)
+            imageView?.setOnClickListener {
+                Log.e("my", "click image")
+            }
+        }
+    }
+
+    class TextViewHolder(itemView: View) : MyViewHolder(itemView) {
+
+        var textView: TextView? = null
+
+        init {
+            textView = itemView?.findViewById(R.id.textView)
+            textView?.text = "124"
+
         }
     }
 

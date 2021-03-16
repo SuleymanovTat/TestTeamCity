@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.os.SystemClock
 import androidx.test.rule.ActivityTestRule
+import com.agoda.kakao.text.KTextView
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
@@ -35,11 +36,18 @@ class RecyclerTest : TestCase() {
                     recycler.isVisible()
 //                    https://www.raywenderlich.com/1505688-ui-testing-with-kakao-tutorial-for-android-getting-started
                     recycler {
-                        firstChild<ImageItem> {
-                            isVisible()
-//                            textViewSmall { hasText("кот") }
-                            click()
+//                        firstChild<ImageItem> {
+//                            isVisible()
+//                            click()
+//                            imageView.isVisible()
+//                        }
+                        childWith<ImageItem> {
+                        } perform {
+                            imageView {
+                                click()
+                            }
                         }
+
                         SystemClock.sleep(1500);
                         childAt<Item>(1) {
                             isVisible()
@@ -47,6 +55,15 @@ class RecyclerTest : TestCase() {
                             click()
                         }
                         SystemClock.sleep(1500);
+                        childWith<TextItem> {
+                            testLogger.i("TextItem 1")
+                        } perform {
+                            textView {
+                                testLogger.i("TextItem 2")
+                                hasText("124")
+                                testLogger.i("TextItem 3")
+                            }
+                        }
                         scrollToEnd()
                     }
                     testLogger.i("END NotificationsFragmentScreen")

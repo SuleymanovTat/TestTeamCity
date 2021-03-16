@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/relativeLayoutClcik"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="150dp"
         app:srcCompat="@drawable/ic_notifications_black_24dp" />
 </RelativeLayout>

@@ -80,7 +80,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-dynamic-links'
     //push
-    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+    implementation 'com.onesignal:OneSignal:4.3.0'
 
 //    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0-RC1"))
 //    // define any required OkHttp artifacts without version

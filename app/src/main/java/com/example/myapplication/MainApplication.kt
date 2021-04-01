@@ -21,13 +21,14 @@ class MainApplication : Application() {
         // Enable verbose OneSignal logging to debug issues if needed.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
         // OneSignal Initialization
-        OneSignal.setAppId(ONESIGNAL_APP_ID)
         OneSignal.initWithContext(this)
+        OneSignal.setAppId(ONESIGNAL_APP_ID)
         OneSignal.setNotificationOpenedHandler { result: OSNotificationOpenedResult ->
             OneSignal.onesignalLog(
                 OneSignal.LOG_LEVEL.VERBOSE,
                 "OSNotificationOpenedResult result: $result"
             )
+            Log.e("my", "setNotificationOpenedHandler")
         }
 
         OneSignal.setNotificationWillShowInForegroundHandler { notificationReceivedEvent: OSNotificationReceivedEvent ->
@@ -39,6 +40,7 @@ class MainApplication : Application() {
             val notification = notificationReceivedEvent.notification
             val data = notification.additionalData
             notificationReceivedEvent.complete(null)
+            Log.e("my", "setNotificationWillShowInForegroundHandler")
         }
 
         OneSignal.unsubscribeWhenNotificationsAreDisabled(true)

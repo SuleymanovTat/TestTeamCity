@@ -19,3 +19,6 @@
 # UI Test kaspresso
 
 # Firebase Remote Config
+
+# App widget
+
